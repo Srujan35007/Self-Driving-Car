@@ -1,11 +1,11 @@
 # Self-Driving-Car
 A self driving car trained by supervised learning.
-
+![The full image screenshot](./screenshots/img.jpg)
 - The model is trained with the help of data collected while a human player is playing the game.<br>
 - Then the model is trained on classifying the actions based on the input image from the screen.<br>
 - The model can achieve near human player accuracy.<br>
 - This model is really good for lane keeping.<br>
-
+![The model architecture](./screenshots/architecture.png)
 ## Training process
 ### 1. Get images
 - Grab the whole screen while player presses any of the control keys.
