@@ -225,7 +225,7 @@ def Train_optimizer(val_loss_list):
             return False
 
 
-IMG_HEIGHT, IMG_WIDTH = 40, 60
+IMG_HEIGHT, IMG_WIDTH = 192, 341
 N_C = [1, 512, 256, 128, 64]
 N_K = [5, 4, 3, 2]
 N_MP = None
