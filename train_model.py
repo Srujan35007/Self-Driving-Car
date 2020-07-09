@@ -20,7 +20,7 @@ from pathlib import Path
 a = time.time()
 print('Imports complete in {} seconds.'.format(a-b))
 
-
+# This following part is if you are training your model in Google Colab
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 from google.colab import auth
@@ -31,7 +31,9 @@ gauth = GoogleAuth()
 gauth.credentials = GoogleCredentials.get_application_default()
 drive = GoogleDrive(gauth)
 
+# Update your pickled dataset to your google drive and get shareable link id
 pickle_import = drive.CreateFile({'id':'sharable_link_to_pickle_file'})
+
 pickle_import.GetContentFile('sample0.pickle')
 with open('sample0.pickle','rb') as pic:
   Data = pickle.load(pic)
@@ -42,6 +44,7 @@ print(f'Data points in the training data = {len(train_data)}')
 print(f'Data points in the testing data = {len(test_data)}')
 
 def plot_loss(epochs, train_loss, val_loss):
+  # For plotting training and testing metrics
     plt.style.use('fivethirtyeight')
     plt.plot(epochs, train_loss, linewidth = 0.8, color = 'r', label = 'train_loss')
     plt.plot(epochs, val_loss, linewidth = 0.8, color = 'b', label = 'val_loss')
@@ -54,6 +57,7 @@ def plot_loss(epochs, train_loss, val_loss):
     plt.show()
 
 def plot_acc(epochs, train_acc, val_acc, val_loss):
+  # For plotting training and testing metrics
     plt.style.use('fivethirtyeight')
     plt.plot(epochs, train_acc, linewidth = 0.8, color = 'r', label = 'train_acc')
     plt.plot(epochs, val_acc, linewidth = 0.8, color = 'b', label = 'val_acc')
@@ -71,6 +75,7 @@ def loss_minima(loss_list): #Inputs: loss array
     return _loss[0]
 
 def one_hot(k, N_OUTPUTS):
+  # For one_hot encoding a value
     a = []
     for i in range(N_OUTPUTS):
         if i != k:
@@ -80,6 +85,7 @@ def one_hot(k, N_OUTPUTS):
     return torch.tensor(a)
 
 def Train_optimizer(val_loss_list):
+  # For early stopping to avoid over-fitting
     temp = val_loss_list
     val_loss_list = val_loss_list[-10:]
     if len(val_loss_list) <= 6:
