@@ -1,3 +1,4 @@
+# Run this program while a human player is driving the car in the open world game
 import time
 import numpy as np
 import cv2
