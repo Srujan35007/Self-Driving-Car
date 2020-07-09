@@ -1,3 +1,4 @@
+# Run this after making the training data from capturing the screen data
 import os
 import torch
 import pickle
@@ -7,7 +8,9 @@ import random
 from tqdm import tqdm
 print('Imports complete')
 
+# path to where the screen grab images are stored
 path = f'F:\\Srujan\\MyProjects\\Data_Sets\\self_driving_car'
+
 file_paths = []
 for root, dirs, files in os.walk(path):
     for file in files:
